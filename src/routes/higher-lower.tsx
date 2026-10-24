@@ -115,7 +115,7 @@ function HigherLower() {
   );
 }
 
-function Card({ mon, value, tone, children }: { mon: Pokemon; value: string; tone?: "good" | "bad"; children?: React.ReactNode }) {
+function Card({ mon, value, tone, children }: { mon: Pokemon; value: string; tone?: "good" | "bad" | undefined; children?: React.ReactNode }) {
   const ring = tone === "good" ? "border-success" : tone === "bad" ? "border-destructive" : "";
   return (
     <Panel className={`animate-pop-in text-center ${ring}`}>

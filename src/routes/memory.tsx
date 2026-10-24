@@ -37,15 +37,15 @@ function Memory() {
   useEffect(start, []);
 
   const flip = (i: number) => {
-    if (open.length === 2 || open.includes(i) || matched.has(cards[i].id)) return;
+    if (open.length === 2 || open.includes(i) || matched.has(cards[i]!.id)) return;
     const o = [...open, i];
     setOpen(o);
     if (o.length === 2) {
       const m = moves + 1;
       setMoves(m);
-      const [a, b] = o;
-      if (cards[a].id === cards[b].id) {
-        const nm = new Set(matched).add(cards[a].id);
+      const a = o[0]!, b = o[1]!;
+      if (cards[a]!.id === cards[b]!.id) {
+        const nm = new Set(matched).add(cards[a]!.id);
         setMatched(nm);
         setOpen([]);
         if (nm.size === PAIRS) setTimeout(() => setOver({ best: submitScore("memory", m, true) }), 500);
