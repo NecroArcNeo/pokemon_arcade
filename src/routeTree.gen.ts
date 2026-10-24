@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CatchRouteImport } from './routes/catch'
+import { Route as DexEntryRouteImport } from './routes/dex-entry'
+import { Route as HigherLowerRouteImport } from './routes/higher-lower'
+import { Route as MemoryRouteImport } from './routes/memory'
+import { Route as TypeBlitzRouteImport } from './routes/type-blitz'
+import { Route as WhosThatRouteImport } from './routes/whos-that'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CatchRoute = CatchRouteImport.update({
+  id: '/catch',
+  path: '/catch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DexEntryRoute = DexEntryRouteImport.update({
+  id: '/dex-entry',
+  path: '/dex-entry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HigherLowerRoute = HigherLowerRouteImport.update({
+  id: '/higher-lower',
+  path: '/higher-lower',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoryRoute = MemoryRouteImport.update({
+  id: '/memory',
+  path: '/memory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TypeBlitzRoute = TypeBlitzRouteImport.update({
+  id: '/type-blitz',
+  path: '/type-blitz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhosThatRoute = WhosThatRouteImport.update({
+  id: '/whos-that',
+  path: '/whos-that',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/catch': typeof CatchRoute
+  '/dex-entry': typeof DexEntryRoute
+  '/higher-lower': typeof HigherLowerRoute
+  '/memory': typeof MemoryRoute
+  '/type-blitz': typeof TypeBlitzRoute
+  '/whos-that': typeof WhosThatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/catch': typeof CatchRoute
+  '/dex-entry': typeof DexEntryRoute
+  '/higher-lower': typeof HigherLowerRoute
+  '/memory': typeof MemoryRoute
+  '/type-blitz': typeof TypeBlitzRoute
+  '/whos-that': typeof WhosThatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/catch': typeof CatchRoute
+  '/dex-entry': typeof DexEntryRoute
+  '/higher-lower': typeof HigherLowerRoute
+  '/memory': typeof MemoryRoute
+  '/type-blitz': typeof TypeBlitzRoute
+  '/whos-that': typeof WhosThatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/catch'
+    | '/dex-entry'
+    | '/higher-lower'
+    | '/memory'
+    | '/type-blitz'
+    | '/whos-that'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/catch'
+    | '/dex-entry'
+    | '/higher-lower'
+    | '/memory'
+    | '/type-blitz'
+    | '/whos-that'
+  id:
+    | '__root__'
+    | '/'
+    | '/catch'
+    | '/dex-entry'
+    | '/higher-lower'
+    | '/memory'
+    | '/type-blitz'
+    | '/whos-that'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CatchRoute: typeof CatchRoute
+  DexEntryRoute: typeof DexEntryRoute
+  HigherLowerRoute: typeof HigherLowerRoute
+  MemoryRoute: typeof MemoryRoute
+  TypeBlitzRoute: typeof TypeBlitzRoute
+  WhosThatRoute: typeof WhosThatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/catch': {
+      id: '/catch'
+      path: '/catch'
+      fullPath: '/catch'
+      preLoaderRoute: typeof CatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dex-entry': {
+      id: '/dex-entry'
+      path: '/dex-entry'
+      fullPath: '/dex-entry'
+      preLoaderRoute: typeof DexEntryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/higher-lower': {
+      id: '/higher-lower'
+      path: '/higher-lower'
+      fullPath: '/higher-lower'
+      preLoaderRoute: typeof HigherLowerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memory': {
+      id: '/memory'
+      path: '/memory'
+      fullPath: '/memory'
+      preLoaderRoute: typeof MemoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/type-blitz': {
+      id: '/type-blitz'
+      path: '/type-blitz'
+      fullPath: '/type-blitz'
+      preLoaderRoute: typeof TypeBlitzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/whos-that': {
+      id: '/whos-that'
+      path: '/whos-that'
+      fullPath: '/whos-that'
+      preLoaderRoute: typeof WhosThatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CatchRoute: CatchRoute,
+  DexEntryRoute: DexEntryRoute,
+  HigherLowerRoute: HigherLowerRoute,
+  MemoryRoute: MemoryRoute,
+  TypeBlitzRoute: TypeBlitzRoute,
+  WhosThatRoute: WhosThatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
