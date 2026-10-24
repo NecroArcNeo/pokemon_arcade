@@ -21,8 +21,8 @@ const label = (m: number) => (m === 0 ? "No effect" : m === 0.25 ? "¼×" : m ==
 const DURATION = 60;
 
 function makeQ() {
-  const atk = TYPES[Math.floor(Math.random() * TYPES.length)];
-  const defs = shuffle([...TYPES]).slice(0, Math.random() < 0.5 ? 1 : 2) as PokeType[];
+  const atk: PokeType = TYPES[Math.floor(Math.random() * TYPES.length)]!;
+  const defs = shuffle<PokeType>([...TYPES]).slice(0, Math.random() < 0.5 ? 1 : 2);
   return { atk, defs, answer: effectiveness(atk, defs) };
 }
 
